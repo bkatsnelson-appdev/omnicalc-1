@@ -23,4 +23,16 @@ class ApplicationController < ActionController::Base
     @result = rand(@lower..@upper)
     render({ :template => "calculation_templates/rand_results.html.erb" })
   end
+
+  def blank_sqrt_form
+    render({ :template => "calculation_templates/sqrt_form.html.erb" })
+  end
+
+  def calculate_sqrt
+    #params = {"number" => "42"}
+
+    @num = params.fetch("number").to_f
+    @sqrt_of_num = @num ** (0.5)
+    render({ :template => "calculation_templates/sqrt_results.html.erb" })
+  end
 end
